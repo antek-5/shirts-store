@@ -4,7 +4,7 @@ const productsData = [
     name: 'react',
     title: 'React shirt',
     basePrice: 20,
-    colors: ['blue', 'red', 'green'],
+    colors: ['Blue', 'Red', 'Green'],
     sizes: [
       { name: 'S', additionalPrice: 0 },
       { name: 'M', additionalPrice: 5 },
@@ -17,7 +17,7 @@ const productsData = [
     name: 'kodilla',
     title: 'Kodilla shirt',
     basePrice: 25,
-    colors: ['white', 'black', 'red'],
+    colors: ['White', 'Black', 'Red'],
     sizes: [
       { name: 'S', additionalPrice: 0 },
       { name: 'M', additionalPrice: 2 },

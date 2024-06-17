@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './Product.module.scss';
-import clsx from 'clsx';
-import Button from '../Button/Button';
+import ProductImage from '../ProductImage/ProductImage.js';
+import ProductForm from '../ProductForm/ProductForm.js';
+
 
 const Product = ({ id, name, title, colors, sizes, basePrice,}) => {
 
@@ -20,74 +20,34 @@ const Product = ({ id, name, title, colors, sizes, basePrice,}) => {
     setCurrentColor(selectedColor);
   };
 
-  console.log('name', name);
-  console.log('currentColor', currentColor);
-  console.log('currentSize', currentSize);
-  console.log('sizes', sizes);
-  console.log('colors', colors);
-  
-
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(`Product: ${title}`);
+    console.log(`Price: ${totalPrice}$`);
+    console.log(`Selected color: ${currentColor}`);
+    console.log(`Selected size: ${currentSize}`);
+  };
 
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img 
-          className={styles.image}
-          alt={title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`} />
-      </div>
+      <ProductImage name={name} title={title} currentColor={currentColor} />
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {totalPrice}$</span>
         </header>
-        <form>
-          <div className={styles.sizes}>
-            <h3 className={styles.optionLabel}>Sizes</h3>
-            <ul className={styles.choices}>
 
-              <li><button onClick={changeSize(0)} type="button" className={clsx( (currentSize === sizes[0].name) && styles.active )} >S</button></li>
-              <li><button onClick={changeSize(1)} type="button" className={clsx( (currentSize === sizes[1].name) && styles.active )} >M</button></li>
-              <li><button onClick={changeSize(2)} type="button" className={clsx( (currentSize === sizes[2].name) && styles.active )} >L</button></li>
-              <li><button onClick={changeSize(3)} type="button" className={clsx( (currentSize === sizes[3].name) && styles.active )} >XL</button></li>
+        <ProductForm 
+          changeSize={changeSize}
+          changeColor={changeColor}
+          handleSubmit={handleSubmit}
+          currentColorForm={currentColor}
+          currentSizeForm={currentSize}
+          sizesForm={sizes}
+          colorsForm={colors}
+        />
 
-            </ul>
-          </div>
-          <div className={styles.colors}>
-            <h3 className={styles.optionLabel}>Colors</h3>
-            
-              
-            <ul className={styles.choices}>
-              <li>
-                  <button
-                    onClick={() => changeColor(colors[0])}
-                    type="button"
-                    className={clsx( styles[`color${colors[0]}`], (currentColor === colors[0]) && styles.active )}
-                  />
-              </li>
-              <li>
-                  <button
-                    onClick={() => changeColor(colors[1])}
-                    type="button"
-                    className={clsx( styles[`color${colors[1]}`], (currentColor === colors[1]) && styles.active )}
-                  />
-              </li>
-              <li>
-                  <button
-                    onClick={() => changeColor(colors[2])}
-                    type="button"
-                    className={clsx( styles[`color${colors[2]}`], (currentColor === colors[2]) && styles.active )}
-                  />
-              </li>
-            </ul>
-
-
-          </div>
-          <Button className={styles.button}>
-            <span className="fa fa-shopping-cart" />
-          </Button>
-        </form>
       </div>
     </article>
   );
