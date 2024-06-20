@@ -1,8 +1,8 @@
 import styles from './Header.module.scss';
 
-const Header = () => (
+const Header = ({title = "ShopApp"}) => (
     <header>
-        <h1 className={styles.title}>ShopApp</h1>
+        <h1 className={styles.title}>{title}</h1>
     </header>
 );
 

@@ -3,7 +3,6 @@ import React from 'react';
 import styles from '../Product/Product.module.scss';
 
 const ProductImage = title => {
-    
 
     return(
         <div className={styles.imageContainer}>

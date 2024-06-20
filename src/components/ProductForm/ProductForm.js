@@ -11,7 +11,7 @@ const ProductForm = ({changeSize, changeColor, handleSubmit, currentSizeForm, cu
         <form onSubmit={handleSubmit}>
             <OptionSize
                 changeSize={changeSize}
-                currentSizeForm={currentColorForm}
+                currentSizeForm={currentSizeForm}
                 sizesForm={sizesForm}
             />
             <OptionColor
